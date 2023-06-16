@@ -6,8 +6,8 @@
 
 require "parlset"
 
-module Rulogic
-  class RulogicParser < Parslet::Parser
+module VortexLang
+  class VortexParser < Parslet::Parser
     root(:predicate)
 
     rule(:predicate) { assertion | rule | query }
@@ -74,7 +74,7 @@ module Rulogic
     }
   end
 
-  class RulogicTransform << Parslet::Transform
+  class VortexTransform << Parslet::Transform
     # Basics
     rule(:lbracket) { "(" }
     rule(:rbracket) { ")" }
@@ -105,13 +105,13 @@ module Rulogic
     rule(:meows) { "meows" }
   end
 
-  class RulogicInput
+  class VortexInput
     def self.interpreter
       begin
-        print "Ahusacos() >> "; input = gets.chomp # .split(" ")
+        print "Vortex >> "; input = gets.chomp # .split(" ")
 
-        parser      = AhusacosParser.new
-        transform   = AhusacosTransform.new
+        parser      = VortexParser.new
+        transform   = VortexTransform.new
 
         tree        = parser.parse(input)
         ast         = transform.apply(tree)
