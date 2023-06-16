@@ -1,4 +1,4 @@
-# Rulogic
+# Vortex
 A logic scripting language implemented using Parslet.
 
 ## Example Query
